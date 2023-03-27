@@ -6,6 +6,8 @@
 
 	let page;
 
+	onMount(onRouteChange);
+
 	function onRouteChange() {
 		const path = window.location.hash.slice(1);
 
@@ -16,8 +18,6 @@
 		} else {
 			window.location.hash = '/';
 		}
-
-		onMount(onRouteChange);
 	}
 </script>
 
