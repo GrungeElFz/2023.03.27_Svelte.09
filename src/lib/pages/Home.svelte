@@ -1,7 +1,11 @@
 <script>
 	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
-	const scale = tweened(1);
+	const scale = tweened(1, {
+		duration: 200,
+		easing: cubicOut
+	});
 </script>
 
 <button
