@@ -1,7 +1,11 @@
 <script>
-	import settings from '../stores/settings';
+	import { writable } from 'svelte/store';
+
+	const scale = writable(1);
 </script>
 
-<h2>Home</h2>
-
-{$settings.colorScheme}
+<button>Bigger</button>
+<button>Smaller</button>
+<div
+	style="width: 7rem; height: 7rem; background-color: rgb(130,115,210); transform: scale({$scale})"
+/>
