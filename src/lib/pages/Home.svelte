@@ -1,7 +1,7 @@
 <script>
-	import { writable } from 'svelte/store';
+	import { tweened } from 'svelte/motion';
 
-	const scale = writable(1);
+	const scale = tweened(1);
 </script>
 
 <button
