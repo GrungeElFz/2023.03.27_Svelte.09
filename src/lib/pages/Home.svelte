@@ -2,31 +2,33 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
-	const scale = tweened(1, {
-		duration: 200,
-		easing: cubicOut
-	});
+	const size = tweened(
+		{
+			width: 100,
+			height: 100
+		},
+		{
+			duration: 200,
+			easing: cubicOut
+		}
+	);
 </script>
 
 <button
-	on:click={() => {
-		$scale += 1;
+	on:click={async () => {
+		await size.set({
+			width: Math.random() * 500,
+			height: Math.random() * 500
+		});
+		console.log('Done');
 	}}
 >
-	Bigger
+	Random Size
 </button>
-<button
-	on:click={() => {
-		$scale -= 1;
-	}}
->
-	Smaller
-</button>
+
 <div
 	style="
-		width: 7rem;
-		height: 7rem;
-		background-color: rgb(130,115,210);
-		transform: scale({$scale});
-		transform-origin: 0 0"
+		width: {$size.width}px;
+		height: {$size.height}px;
+		background-color: rgb(130,115,210);"
 />
